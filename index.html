@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG</title>
-  </head>
-  <body>
-    <div id="pohja"></div>
+<head>
+  <style>
+  .multiselect {
+    width: 200px;
+  }
 
-    <svg width="300" height="200">
-      <polygon points="100,10 40,198 190,78 10,78 160,198"
-      style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
-    Sorry, your browser does not support inline SVG.
-    </svg>
+  .selectBox {
+    position: relative;
+  }
 
-    <img src="Peli18v3.png" alt="">
-    <img src="./Images/Peli18.png" alt="">
-  </body>
+  .selectBox select {
+    width: 100%;
+    font-weight: bold;
+  }
+
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+  }
+
+  #checkboxes label {
+    display: block;
+  }
+
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <div class="multiselect">
+      <div class="selectBox" onclick="showCheckboxes()">
+        <select>
+          <option>Select an option</option>
+        </select>
+        <div class="overSelect"></div>
+      </div>
+      <div id="checkboxes">
+        <label for="one">
+          <input type="checkbox" id="one" />First checkbox</label>
+        <label for="two">
+          <input type="checkbox" id="two" />Second checkbox</label>
+        <label for="three">
+          <input type="checkbox" id="three" />Third checkbox</label>
+      </div>
+    </div>
+  </form>
+</body>
 </html>
 
-<script src = "code.js"></script>
+<script>
+  var expanded = false;
+
+  function showCheckboxes() {
+    var checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+</script>
